@@ -39,9 +39,6 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(multer({
-  dest: path.join(__dirname,'public/images/cuadros') // permite guardar imagenes en la ruta que elija
-}).single('image')); 
 
 // GLOBAL VARIABLES
 app.use((req, res, next) => {
