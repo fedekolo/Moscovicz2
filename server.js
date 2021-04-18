@@ -54,7 +54,7 @@ app.use(require('./routes/authentication'));
 app.use(require('./routes/cuadros'));
 
 // PUBLIC
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'))); // evita que puedas abrir las imagenes directo desde el navegador
 
 // PUERTO HEROKU
 // app.listen(PORT,()=>{
