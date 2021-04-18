@@ -1,0 +1,42 @@
+/* eliminar efecto de entrada de logo */
+header {
+    transform: none;
+    -webkit-transform: none;
+    animation: none;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-image: url("../images/background-admin.jpg");
+    background-size: cover;
+}
+
+.login {
+    width: 25rem;
+    max-width: 90%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 5rem;
+}
+
+.form-floating {
+    width: 100%;
+    opacity: .8;
+}
+
+.btn {
+    margin-top: 1rem;
+}
+
+@media (max-width: 600px) {
+    body {
+        background-image: url("../images/background-admin.jpg");
+        background-size: auto 300%;
+        background-position: center center;
+    }
+}
+
+

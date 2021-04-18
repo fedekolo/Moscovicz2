@@ -1,5 +1,9 @@
+{{> navigation}}
+
+{{> navigationmobile}}
+
 <section class="background-obras" id="obras">
-    
+        
     <!-- popup modal -->
     <div id="myModal" class="modal">
         <span class="close">&times;</span>
@@ -10,8 +14,8 @@
     <div class="obras">
         {{#each cuadro}}
         <div class="cuadro-contenedor"> 
-            <img class="cuadro-imagen" src="images/cuadros/ubicacion-desconocida_190x150.jpg" alt="Ubicación desconocida 190x150cm"/>
-            <h4 class="cuadro-texto">Ubicación<br>desconocida</h4>            
+            <img class="cuadro-imagen" src="/images/cuadros/{{archivo_imagen}}" alt="{{descripcion}}"/>
+            <h4 class="cuadro-texto">{{nombre}}</h4>
         </div>
         {{/each}}
     </div>
@@ -25,10 +29,10 @@
         <input id="abrir-cuadro1" type="checkbox" class="abrir-cuadro-input">
         <input id="abrir-descripcion1" type="checkbox" class="abrir-descripcion-input">
         <div class="cuadro-contenedor"> 
-            <img class="cuadro-imagen" src="images/cuadros/ubicacion-desconocida_190x150.jpg" alt="Ubicación desconocida"/>
+            <img class="cuadro-imagen" src="/images/cuadros/{{archivo_imagen}}" alt="{{descripcion}}"/>
             <div class="cuadro-contenedor-descripcion">
-                <h4 class="titulo-cuadro-mobile">Ubicación desconocida</h4> 
-                <p class="descripcion-cuadro-mobile">190x150cm</p>
+                <h4 class="titulo-cuadro-mobile">{{nombre}}</h4> 
+                <p class="descripcion-cuadro-mobile">{{descripcion}}</p>
             </div>
             <div class="cuadro-contenedor-botones">
                 <label for="abrir-descripcion1" class="abrir-descripcion-label">
@@ -60,3 +64,5 @@
     </div>
 </aside>
 <!-- fin informacion exposicion -->
+
+{{> footer}}

@@ -11,6 +11,7 @@ const storage = multer.diskStorage({
         cb(null, uuidv4() + path.extname(file.originalname)); // las imagenes que subo van a cambiar su nombre a un algoritmo
     }
 });
+const pool = require('../database'); // conexion con base de datos
 
 // MIDDLEWARE
 const upload = multer({
@@ -30,9 +31,19 @@ const upload = multer({
 }).single('image'); 
 
 // RUTAS
-router.post('/upload',upload,(req,res) => {
-    console.log(req.file);
-    res.send('Subido');
+router.post('/upload',upload, async (req,res) => {
+    const { nombre, precio, descripcion} = req.body;
+    const archivo_imagen = req.file.filename;
+    const cuadroNuevo = {
+        nombre,
+        archivo_imagen,
+        precio,
+        descripcion
+    };
+    await pool.query('INSERT INTO t_cuadros set ?', [cuadroNuevo]);
+    req.flash('success','Cuadro subido correctamente');
+    console.log(req.file)
+    res.redirect('/adminhome'); // una vez subido el producto te redirecciona a esta ruta
 });
 
 module.exports = router;
