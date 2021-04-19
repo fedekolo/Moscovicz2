@@ -31,7 +31,7 @@ body {
     margin-top: 1rem;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 950px) {
     body {
         background-image: url("../images/background-admin.jpg");
         background-size: auto 300%;
