@@ -1,0 +1,31 @@
+{{!-- permite enviar un mensaje al usuario en el caso de completarse una accion determinada --}}
+{{#if success}} 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        function confirmacion() {
+            Swal.fire({
+                icon: 'success',
+                title: '{{success}}',
+                showConfirmButton: true,
+                button: "OK"
+            })
+        }
+        confirmacion();
+    </script>
+{{/if}}
+
+{{#if message}} 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        function mensajeError() {
+            Swal.fire({
+                icon: 'error',
+                text: '{{message}}',
+                showConfirmButton: true,
+                button: "OK"
+            })
+        }
+        mensajeError();
+    </script>
+    
+{{/if}}

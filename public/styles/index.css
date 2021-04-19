@@ -145,11 +145,14 @@ header {
 nav {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: .5rem auto;
 }
 
 .menu {
-    width: 400px;
-    height: 30px;
+    width: 25rem;
+    height: 10px;
     list-style: none;
     display: flex;
     flex-direction: row;
@@ -181,6 +184,15 @@ a:link, a:visited, a:active {
 
 .item-menu:hover > a {
     color: black;
+}
+
+.item-menu-admin > a {
+    color: red;
+}
+
+.item-menu-admin:hover > a {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .slider {
@@ -411,7 +423,7 @@ img{
 .background-contacto {
     width: 100%;
     height: auto;
-    background-color: rgba(109, 109, 109, 0.192);
+    background-color: rgba(109, 109, 109, 0.301);
     box-shadow: 5px 5px 5px 5px rgba(128, 128, 128, 0.363);
     margin-top: 30px;
     box-sizing: border-box;

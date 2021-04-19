@@ -7,7 +7,6 @@ const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
 const { database } = require('./keys');
 const passport = require('passport');
-const multer = require('multer');
 const PORT = process.env.PORT || 3306;
 
 // INICIALIZADORES
@@ -51,10 +50,10 @@ app.use((req, res, next) => {
 // RUTAS
 app.use(require('./routes/index'));
 app.use(require('./routes/authentication'));
-app.use(require('./routes/cuadros'));
+app.use('/',require('./routes/cuadros'));
 
 // PUBLIC
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'))); // evita que puedas abrir las imagenes directo desde el navegador
 
 // PUERTO HEROKU
 // app.listen(PORT,()=>{

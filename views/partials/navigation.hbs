@@ -4,6 +4,12 @@
         <li class="item-menu"><a href="#galeria">galeria</a></li>
         <li class="item-menu"><a href="#contacto">contacto</a></li>
     </ul>
+    {{#if user}}
+    <ul class="menu">
+        <li class="item-menu-admin"><a href="#obras">agregar cuadro</a></li>
+        <li class="item-menu-admin"><a href="/cerrarsesion">cerrar sesión</a></li>
+    </ul>
+    {{/if}}
 </nav>
 
 <!-- slider bootstrap -->
