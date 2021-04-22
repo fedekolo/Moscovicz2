@@ -1,0 +1,61 @@
+{{!-- CSS ADMIN --}}
+<link rel="stylesheet" href="styles/admin.css">
+
+{{!-- HTML ADMIN HOME --}}
+
+{{!-- logo admin --}}
+<header id="up">
+    <img class="logo-admin" src="images/logo-admin.png" alt="Moscovicz"/>
+</header>
+
+<button class="btn btn-secondary" id="btn-modal">Modal</button>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">CUADROS</th>
+      <th scope="col">DETALLES</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {{#each cuadro}}
+    <tr class="fila-cuadro">
+        <td>
+            <img class="cuadro-imagen" src="/images/cuadros/{{archivo_imagen}}" id="cuadro-imagen-{{id}}">
+        </td>
+        <form action="/editarcuadro/{{id}}" method="POST">
+          <td class="inputs-cuadro">
+              <div class="mb-3 edit-cuadro-input">
+                  <label for="form-titulo" class="form-label">Título</label>
+                  <input type="text" class="form-control" id="form-titulo" autocomplete="off" value="{{nombre}}" name="nombre">
+              </div>
+              <div class="mb-3 edit-cuadro-input">
+                  <label for="form-descripcion" class="form-label">Descripción</label>
+                  <input type="text" class="form-control" id="form-descripcion" autocomplete="off" value="{{descripcion}}" name="descripcion">
+              </div>
+              <button type="submit" class="btn btn-secondary">Editar Cuadro</button>
+        </form>
+              <form action="/eliminarcuadro/{{id}}" method="POST">
+                <button class="btn btn-secondary" type="submit">Eliminar Cuadro</button>
+              </form>
+          </td>
+    </tr>
+    {{/each}}
+
+  </tbody>
+</table>
+
+<!-- popup modal -->
+<div id="modal-upload" class="modal">
+    <span class="close">&times;</span>
+    <div id="form-upload">
+      <form action="/upload" method="POST" enctype="multipart/form-data">
+          <input type="text" name="nombre" placeholder="Nombre">
+          <input type="text" name="precio" placeholder="precio">
+          <input type="text" name="descripcion" placeholder="descripcion">
+          <input id="file" type="file" name="image">
+          <button type="submit">Upload</button>
+      </form>
+    </div>
+</div>

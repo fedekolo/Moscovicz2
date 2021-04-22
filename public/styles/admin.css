@@ -1,3 +1,12 @@
+html, body {
+    width: 100%; 
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    font-family: 'Cutive Mono', monospace;
+    scroll-behavior: smooth;
+}
+
 /* eliminar efecto de entrada de logo */
 header {
     transform: none;
@@ -11,6 +20,17 @@ body {
     flex-direction: column;
     background-image: url("../images/background-admin.jpg");
     background-size: cover;
+}
+
+.logo {
+    display: none;
+}
+
+.logo-admin {
+width: 40%;
+max-width: 400px;
+min-width: 200px;
+margin-bottom: 20px;
 }
 
 .login {
@@ -29,6 +49,43 @@ body {
 
 .btn {
     margin-top: 1rem;
+    width: 50%;
+}
+
+.table {
+    background-color: rgba(0, 0, 0, 0.267);
+    color: white;
+    text-align: center;
+}
+
+.table thead {
+    background-color: rgba(0, 0, 0, 0.39);
+}
+
+.col {
+    font-weight: bold;
+}
+
+td {
+    width: 50%;
+}
+
+.fila-cuadro:hover {
+    background-color: rgba(0, 0, 0, 0.39);
+}
+
+.inputs-cuadro {
+    margin: center;
+}
+
+.edit-cuadro-input {
+    width: 80%;
+    margin: auto;
+    opacity: .8;
+}
+
+.edit-cuadro-input label {
+    font-weight: bold;
 }
 
 @media (max-width: 950px) {
