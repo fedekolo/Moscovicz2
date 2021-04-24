@@ -2,21 +2,34 @@
 
 {{> navigationmobile}}
 
-<section class="background-obras" id="obras">
-        
-    <!-- popup modal -->
-    <div id="myModal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="img01">
-        <div id="caption"></div>
-    </div>
-    
+<section class="background-obras" id="obras">    
     <div class="obras">
-        {{#each cuadro}}
-        <div class="cuadro-contenedor"> 
-            <img class="cuadro-imagen" src="/images/cuadros/{{archivo_imagen}}" alt="{{descripcion}}"/>
-            <h4 class="cuadro-texto">{{nombre}}</h4>
+        
+        <!-- popup modal -->
+        <div id="myModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
+            <div id="caption"></div>
         </div>
+
+        {{#each cuadro}}
+        <div class="cuadro-contenedor" id="cuadro-contenedor-{{id}}"> 
+            <img class="cuadro-imagen" src="/images/cuadros/{{archivo_imagen}}" alt="{{descripcion}}" id="cuadro-imagen-{{id}}">
+            <h4 class="cuadro-texto" id="cuadro-texto-{{id}}">{{nombre}}</h4>
+        </div>
+
+        <script>
+            var contenedor = document.getElementById("cuadro-contenedor-{{id}}");
+            var img{{id}} = document.getElementById("cuadro-imagen-{{id}}");
+            var tituloImagen{{id}} = document.getElementById("cuadro-texto-{{id}}").textContent.toUpperCase();
+            var descripcionImagen{{id}} = document.getElementById("cuadro-imagen-{{id}}").alt;
+            
+            contenedor.onclick = function(){
+                modal.style.display = "block";
+                modalImg.src = img{{id}}.src;
+                captionText.innerHTML = tituloImagen{{id}} + `<br>` + descripcionImagen{{id}};
+            }
+        </script>
         {{/each}}
     </div>
 </section>

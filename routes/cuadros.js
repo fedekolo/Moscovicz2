@@ -31,6 +31,8 @@ const upload = multer({
 }).single('image'); 
 
 // RUTAS
+
+// subir cuadro
 router.post('/upload',upload, async (req,res) => {
     const { nombre, precio, descripcion} = req.body;
     const archivo_imagen = req.file.filename;
@@ -42,8 +44,29 @@ router.post('/upload',upload, async (req,res) => {
     };
     await pool.query('INSERT INTO t_cuadros set ?', [cuadroNuevo]);
     req.flash('success','Cuadro subido correctamente');
-    console.log(req.file)
     res.redirect('/adminhome'); // una vez subido el producto te redirecciona a esta ruta
+});
+
+// editar cuadro
+router.post('/editarcuadro/:id', async (req, res) => {
+    const { id } = req.params;
+    const { nombre, descripcion } = req.body; 
+    const cuadroNuevo = {
+        nombre,
+        descripcion
+    };
+    await pool.query('UPDATE t_cuadros set ? WHERE id = ?', [cuadroNuevo, id]);
+    req.flash('success','Cuadro editado con éxito');
+    res.redirect('/adminhome');
+});
+
+// eliminar cuadro
+router.post('/eliminarcuadro/:id', async (req, res) => {
+    const { id } = req.params;
+    console.log(id)
+    await pool.query('DELETE FROM t_cuadros WHERE ID = ?', [id]);
+    req.flash('success','Cuadro eliminado con éxito');
+    res.redirect('/adminhome'); 
 });
 
 module.exports = router;

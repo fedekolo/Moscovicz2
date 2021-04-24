@@ -26,7 +26,7 @@ router.post('/login', (req, res, next) => {
 router.get('/cerrarsesion', (req, res) => {
   req.logOut();
   req.flash('success','Usuario deslogueado correctamente');
-  res.redirect('/admin');
+  res.redirect('/');
 });
 
 module.exports = router;
