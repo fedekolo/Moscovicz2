@@ -63,7 +63,6 @@ router.post('/editarcuadro/:id', async (req, res) => {
 // eliminar cuadro
 router.post('/eliminarcuadro/:id', async (req, res) => {
     const { id } = req.params;
-    console.log(id)
     await pool.query('DELETE FROM t_cuadros WHERE ID = ?', [id]);
     req.flash('success','Cuadro eliminado con éxito');
     res.redirect('/adminhome'); 
