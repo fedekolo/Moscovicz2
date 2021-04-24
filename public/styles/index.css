@@ -488,17 +488,6 @@ img{
     font-family: 'Cutive Mono', monospace;
 }
 
-.formulario-contacto > input {
-    margin: 5px;
-    width: 70%;
-    max-width: 200px;
-    height: 30px;
-    border-radius: 5px;
-    border: none;
-    box-shadow: 2px 2px 2px 2px rgba(128, 128, 128, 0.089);
-    font-family: 'Cutive Mono', monospace;
-}
-
 /* eliminar flechas input number */
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
@@ -508,27 +497,17 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0; 
 } 
 
-.formulario-contacto > textarea {
-    margin: 5px;
-    width: 75%;
-    max-width: 420px;
-    height: 70px;
-    border-radius: 5px;
-    border: none;
-    box-shadow: 2px 2px 2px 2px rgba(128, 128, 128, 0.089);
-    font-family: 'Cutive Mono', monospace;
-    resize: none;
-}
-
-::-webkit-input-placeholder {
+.label-form {
+    color: rgba(0, 0, 0, 0.548);
+    display: inline-block;
+    width: 100%;
     text-align: center;
-    font-family: 'Cutive Mono', monospace;
-}
+} 
 
 .boton-contacto {
     width: 40%;
     max-width: 200px;
-    height: 30px;
+    height: 40px;
     margin: 10px;
     border-radius: 10px;
     border: none;
