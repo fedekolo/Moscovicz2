@@ -1,8 +1,52 @@
-    <div class="admin-form">
+    {{!-- <div class="admin-form">
         <form action="/upload" method="POST" enctype="multipart/form-data">
             <input type="text" name="name" placeholder="Nombre">
             <input type="file" name="image">
             <textarea name="description" cols="30" rows="10" placeholder="Descripción"></textarea>
             <button type="submit">Upload</button>
         </form>
+    </div> --}}
+
+    <!-- Modal registro -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Registrate!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiarForm()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="agregar-produc-form" action="/registro" method="POST">
+                    <label for="name">Nombre y apellido:</label><br>
+                    <input class="input-modal" type="text" id="nombre-apellido" name="nombre" autofocus required><br>
+
+                    <label for="contrasena">Contraseña:</label><br>
+                    <input class="input-modal" type="password" id="constrasena" name="contrasena" required><br>
+
+                    <label for="confirmarContrasena">Confirmar contraseña:</label><br>
+                    <input class="input-modal" type="password" id="confirm-constrasena" name="confirmarContrasena" required><br>
+                
+                    <label for="telefono">Telefono de contacto:</label><br>
+                    <input class="input-modal" type="number" id="telefono" name="telefono" required><br>
+
+                    <label for="direccion">Dirección:</label><br>
+                    <input class="input-modal" type="text" id="direccion" name="direccion" required><br>
+                
+                    <label for="mail">Mail:</label><br>
+                    <input class="input-modal" type="mail" id="mail" name="mail" required><br>
+
+                    <label for="dni">DNI:</label><br>
+                    <input class="input-modal" type="number" id="dni" name="dni" required><br>
+
+                    <span id="error-modal"></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="sumbit" class="btn btn-success">Guardar</button>
+                    </div>
+            </form>
+        </div>
     </div>
+</div>
