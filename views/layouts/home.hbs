@@ -18,6 +18,7 @@
             <h4 class="cuadro-texto" id="cuadro-texto-{{id}}">{{nombre}}</h4>
         </div>
 
+        {{!-- JS para el modal de cada cuadro en particular --}}
         <script>
             var contenedor = document.getElementById("cuadro-contenedor-{{id}}");
             var img{{id}} = document.getElementById("cuadro-imagen-{{id}}");
@@ -27,10 +28,9 @@
             contenedor.onclick = function(){
                 modal.style.display = "block";
                 modalImg.src = img{{id}}.src;
-                captionText.innerHTML = tituloImagen{{id}} + `<br>` + descripcionImagen{{id}};
+                captionText.innerHTML = `<div class="cuadro-titulo-modal">` + tituloImagen{{id}} + `</div><br>` +
+                                        `<div class="cuadro-descripcion-modal">` + descripcionImagen{{id}} + `</div>`;
             }
-
-            console.log(img{{id}}.height)
         </script>
         {{/each}}
     </div>

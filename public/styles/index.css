@@ -8,7 +8,7 @@ html, body {
 }
 
 /* loader */
-.loading {
+/* .loading {
     position: fixed;
     top: 0;
     left: 0;
@@ -47,7 +47,7 @@ html, body {
   to {
     transform: rotate(360deg);
   }
-}   
+}    */
 /* fin loader */
 
 header {
@@ -315,7 +315,7 @@ img{
     margin: auto;
 }
 
-/* popup nuevo */
+/* popup para visualizar cuadros */
     .modal {
         display: none; /* Hidden by default */
         position: fixed; /* Stay in place */
@@ -346,9 +346,10 @@ img{
         max-width: 700px;
         text-align: center;
         color: rgb(255, 255, 255);
-        padding: 20px 0 0 0;
+        padding: 15px 0 0 0;
         height: 150px;
         font-size: 20px;
+        line-height: 1rem;
       }
       
       /* Add Animation */
@@ -394,6 +395,15 @@ img{
         }
       }
 
+      .cuadro-titulo-modal {
+        font-weight: bold;
+        font-size: 1.8rem;
+      }
+
+      .cuadro-descripcion-modal {
+        font-size: 1.2rem;
+      }
+
 .exposicion {
     width: 70%;
     max-width: 900px;
@@ -418,6 +428,7 @@ img{
     justify-content: center;
     letter-spacing: 25px;
     margin: 30px auto;
+    font-weight: bold;
 }
 
 .info-exposicion {
@@ -452,6 +463,7 @@ img{
     display: flex;
     justify-content: center;
     letter-spacing: 25px;
+    font-weight: bold;
 }
 
 .contacto {

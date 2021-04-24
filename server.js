@@ -51,6 +51,7 @@ app.use((req, res, next) => {
 app.use(require('./routes/index'));
 app.use(require('./routes/authentication'));
 app.use('/',require('./routes/cuadros'));
+app.use(require('./routes/contacto'));
 
 // PUBLIC
 app.use(express.static(path.join(__dirname, 'public'))); // evita que puedas abrir las imagenes directo desde el navegador

@@ -1,14 +1,31 @@
 <footer class="background-contacto">
     <h2 class="titulo-contacto">CONTACTO</h2>
     <div class="contacto" id="contacto">
-        <form class="formulario-contacto" method="post" action="https://formspree.io/xknqlobb">
-            <input type="text" name="nombre" placeholder="Nombre" required autocomplete="off">
-            <input type="text" name="apellido" placeholder="Apellido" required autocomplete="off">
-            <input type="number" name="telefono" placeholder="Número de contacto" required autocomplete="off">
-            <input type="email" name="mail" placeholder="Mail" autocomplete="off"><br>
-            <textarea name="comentarios" placeholder="Dejá tus comentarios" required autocomplete="off"></textarea><br>
-            <button class="boton-contacto" type="submit">ENVIAR</button>
-        </form>
+    <form class="row g-3 formulario-contacto" action="/mailcontacto" method="POST">
+        <div class="form-floating col-6">
+            <input type="text" class="form-control" id="floatingInputNombre" name="nombre" placeholder="Nombre" required>
+            <label for="floatingInputNombre">Nombre</label>
+        </div>
+        <div class="form-floating col-6">
+            <input type="text" class="form-control" id="floatingInputApellido" name="apellido" placeholder="Apellido" required>
+            <label for="floatingInputApellido">Apellido</label>
+        </div>
+        <div class="form-floating col-6">
+            <input type="mail" class="form-control" id="floatingInputMail" name="mail" placeholder="Mail">
+            <label for="floatingInputMail">Mail</label>
+        </div>
+        <div class="form-floating col-6">
+            <input type="number" class="form-control" id="floatingInputTelefono" name="telefono" placeholder="Teléfono" required>
+            <label for="floatingInputTelefono">Telefono</label>
+        </div>
+        <div class="form-floating col-12">
+            <textarea class="form-control" id="floatingTextarea2" style="height: 100px" name="comentarios" placeholder="Comentarios" required></textarea>
+            <label for="floatingTextarea2">Comentarios</label>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary boton-contacto">Sign in</button>
+        </div>
+    </form>
         <div class="redes-contacto">
             <div class="boton-background">
                 <a href="https://www.instagram.com/moscovicz_/"><img class="boton-imagen" src="images/boton-instagram.svg" alt="Instagram"/></a>
