@@ -50,14 +50,15 @@
 
 <!-- popup modal -->
 <div id="modal-upload" class="modal">
-    <span class="close">&times;</span>
-    <div id="form-upload">
-      <form action="/upload" method="POST" enctype="multipart/form-data">
-          <input type="text" name="nombre" placeholder="Nombre">
-          <input type="text" name="precio" placeholder="precio">
-          <input type="text" name="descripcion" placeholder="descripcion">
-          <input id="file" type="file" name="image">
-          <button type="submit">Upload</button>
-      </form>
-    </div>
+  <span class="close">&times;</span>
+  <div id="form-upload">
+    <div class="modal-upload-image"><img src="images/pinturapng2.png" alt=""></div>
+    <form class="form-form-upload" action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="text" name="nombre" placeholder="Nombre">
+        <input type="text" name="precio" placeholder="precio">
+        <input type="text" name="descripcion" placeholder="descripcion">
+        <input id="file" type="file" name="image">
+        <button type="submit">Upload</button>
+    </form>
+  </div>
 </div>

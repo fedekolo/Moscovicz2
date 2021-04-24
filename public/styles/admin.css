@@ -92,6 +92,80 @@ td {
     font-weight: bold;
 }
 
+/* MODAL CARGAR CUADRO */
+
+#modal-upload{
+    background-color: rgba(0, 0, 0, 0.815);
+}
+
+#form-upload {
+    border: rgba(128, 128, 128, 0.733) 5px solid;
+    background-color: rgba(145, 145, 145, 0.712);
+    width: 70%;
+    padding: 1% 5% 5% 5%; 
+    margin: auto;
+    border-radius: 7px;    
+}
+
+.modal-upload-image{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+}
+
+.modal-upload-image img{
+    width: 60%;
+    height: fit-content;
+    margin: auto;
+    opacity: 40%;
+}
+
+.form-form-upload{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+}
+
+.form-form-upload input{
+    border: solid 1px  rgb(80, 80, 80);
+    margin-top: 2%;
+    outline: none;
+    transition: border 0.5s ease-in-out;
+    border-radius: 5px;
+    padding-left: 1%;
+}
+
+.form-form-upload input::-webkit-input-placeholder {
+    text-align: left;
+}
+
+.form-form-upload input:focus {
+    border: solid rgba(210, 105, 30, 0.856) 3px;  
+}
+
+.form-form-upload #file {
+    background-color: rgb(255, 255, 255);
+    padding: 1.5px;
+}
+
+
+.form-form-upload button{
+    margin-top: 2%;
+    width: fit-content;
+    border-radius: 5px;
+    border: chocolate 2px solid;
+    background-color:chocolate;
+    color: white;  
+    font-size: 1.1rem;
+    padding: 0.5% 1%;
+}
+
+.form-form-upload button:hover{
+    background-color: rgba(210, 105, 30, 0.781);
+    color: white;
+}
+
 @media (max-width: 950px) {
     body {
         background-image: url("../images/background-admin.jpg");
