@@ -10,7 +10,6 @@
 </header>
 
 <button class="btn btn-secondary" id="btn-modal">Modal</button>
-<a href="/posicioncuadro">Prueba</a>
 
 <table class="table">
   <thead>
@@ -42,7 +41,10 @@
                 <button class="btn btn-secondary" type="submit">Eliminar Cuadro</button>
               </form>
               <form action="/subirposicion/{{id}}" method="POST">
-                <button class="btn btn-secondary" type="submit">Posicion Cuadro</button>
+                <button class="btn btn-secondary" type="submit">Subir Posicion Cuadro</button>
+              </form>
+              <form action="/bajarposicion/{{id}}" method="POST">
+                <button class="btn btn-secondary" type="submit">Bajar Posicion Cuadro</button>
               </form>
           </td>
     </tr>

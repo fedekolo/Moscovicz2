@@ -36,14 +36,17 @@ const upload = multer({
 router.post('/upload',upload, async (req,res) => {
     const { nombre, descripcion} = req.body;
     const archivo_imagen = req.file.filename;
+    const posicionMayor = await pool.query('SELECT MAX(posicion) mayor FROM t_cuadros'); // tomo la posicion mayor hasta el momento para darle la nueva posicion al cuadro nuevo
+    const posicion = posicionMayor[0].mayor + 1;
     const cuadroNuevo = {
         nombre,
         archivo_imagen,
-        descripcion
+        descripcion,
+        posicion
     };
     await pool.query('INSERT INTO t_cuadros set ?', [cuadroNuevo]);
     req.flash('success','Cuadro subido correctamente');
-    res.redirect('/adminhome'); // una vez subido el producto te redirecciona a esta ruta
+    res.redirect('/adminhome');
 });
 
 // editar cuadro
@@ -73,21 +76,38 @@ router.post('/subirposicion/:id', async (req,res) => {
     const { id } = req.params;
     const cuadroAsubir = await pool.query('SELECT * FROM t_cuadros WHERE ID = ?', [id]);
     const posicionMayor = await pool.query('SELECT MAX(posicion) mayor FROM t_cuadros'); // tomo cual es la mayor posicion entre todos los cuadros
-
+    
     if (cuadroAsubir[0].posicion === posicionMayor[0].mayor) {
-        req.flash('message','El cuadro ya está en la primer posición');
-        res.redirect('/adminhome');
+        req.flash('message','El cuadro ya está en la primer posición'); // mensaje de error si el cuadro ya estaba en primer lugar
     } else {
-        cuadroAsubir[0].posicion++
-        await pool.query('UPDATE t_cuadros set ? WHERE id = ?', [cuadroAsubir[0], id]);
+        cuadroAsubir[0].posicion++ // subo la posicion al cuadro seleccionado
+        const cuadroAbajar = await pool.query('SELECT * FROM t_cuadros WHERE posicion = ?', [cuadroAsubir[0].posicion]);
+        cuadroAbajar[0].posicion-- // bajo la posicion al cuadro que estaba por debajo del que subi
+        await pool.query('UPDATE t_cuadros set ? WHERE id = ?', [cuadroAsubir[0], cuadroAsubir[0].id]);
+        await pool.query('UPDATE t_cuadros set ? WHERE id = ?', [cuadroAbajar[0], cuadroAbajar[0].id]);
+        req.flash('success','Posición modificada con éxito');
     }
-
-    // bajo la posicion al cuadro que estaba por debajo del que subi
-    const cuadroAbajar = await pool.query('SELECT * FROM t_cuadros WHERE posicion = ?', [cuadroAsubir[0].posicion]);
-    cuadroAbajar[0].posicion--
-    await pool.query('UPDATE t_cuadros set ? WHERE id = ?', [cuadroAbajar[0], cuadroAbajar[0].id]);
-
     res.redirect('/adminhome'); 
-})
+});
+
+// bajar posicion
+router.post('/bajarposicion/:id', async (req,res) => {
+    // subo una posicion al cuadro seleccionado
+    const { id } = req.params;
+    const cuadroAbajar = await pool.query('SELECT * FROM t_cuadros WHERE ID = ?', [id]);
+    const posicionMenor = await pool.query('SELECT MIN(posicion) menor FROM t_cuadros'); // tomo cual es la menor posicion entre todos los cuadros
+    
+    if (cuadroAbajar[0].posicion === posicionMenor[0].menor) {
+        req.flash('message','El cuadro ya está en la última posición'); // mensaje de error si el cuadro ya estaba en último lugar
+    } else {
+        cuadroAbajar[0].posicion-- // bajo la posicion al cuadro seleccionado
+        const cuadroAsubir = await pool.query('SELECT * FROM t_cuadros WHERE posicion = ?', [cuadroAbajar[0].posicion]);
+        cuadroAsubir[0].posicion++ // subo la posicion al cuadro que estaba por arriba del que baje
+        await pool.query('UPDATE t_cuadros set ? WHERE id = ?', [cuadroAbajar[0], cuadroAbajar[0].id]);
+        await pool.query('UPDATE t_cuadros set ? WHERE id = ?', [cuadroAsubir[0], cuadroAsubir[0].id]);
+        req.flash('success','Posición modificada con éxito');
+    }
+    res.redirect('/adminhome'); 
+});
 
 module.exports = router;
