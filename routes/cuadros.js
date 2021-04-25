@@ -34,12 +34,11 @@ const upload = multer({
 
 // subir cuadro
 router.post('/upload',upload, async (req,res) => {
-    const { nombre, precio, descripcion} = req.body;
+    const { nombre, descripcion} = req.body;
     const archivo_imagen = req.file.filename;
     const cuadroNuevo = {
         nombre,
         archivo_imagen,
-        precio,
         descripcion
     };
     await pool.query('INSERT INTO t_cuadros set ?', [cuadroNuevo]);
