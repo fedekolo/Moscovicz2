@@ -6,7 +6,7 @@ const { usuarioLogueado,usuarioNoLogueado } = require('../lib/auth');
 const pool = require('../database');
 
 router.get('/', async (req, res) => {
-    const cuadro = await pool.query('SELECT * FROM t_cuadros');
+    const cuadro = await pool.query('SELECT * FROM t_cuadros ORDER BY posicion DESC');
     res.render('layouts/home', { cuadro });
 });
 
@@ -15,7 +15,7 @@ router.get('/admin',usuarioNoLogueado, (req, res) => {
 });
 
 router.get('/adminhome',usuarioLogueado, async (req, res) => {
-    const cuadro = await pool.query('SELECT * FROM t_cuadros ORDER BY id DESC');
+    const cuadro = await pool.query('SELECT * FROM t_cuadros ORDER BY posicion DESC');
     res.render('layouts/adminhome', { cuadro });
 });
 
