@@ -1,3 +1,4 @@
+const { Console } = require('console');
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
@@ -65,7 +66,35 @@ router.post('/editarcuadro/:id', async (req, res) => {
 // eliminar cuadro
 router.post('/eliminarcuadro/:id', async (req, res) => {
     const { id } = req.params;
-    await pool.query('DELETE FROM t_cuadros WHERE ID = ?', [id]);
+
+    // tomo la posicion que deja vacante el cuadro que voy a eliminar y lo elimino luego
+    let posicionLibre = await pool.query('SELECT posicion FROM t_cuadros WHERE id = ?', [id]);
+    const posicionMenor = await pool.query('SELECT MIN(posicion) menor FROM t_cuadros');
+    const posicionMayor = await pool.query('SELECT MAX(posicion) mayor FROM t_cuadros');
+
+    if (posicionMenor[0].menor === posicionLibre[0].posicion || posicionMayor[0].mayor === posicionLibre[0].posicion) {
+        // si el cuadro se encuentra primero o ultimo, lo elimina sin modificar posiciones
+        await pool.query('DELETE FROM t_cuadros WHERE ID = ?', [id]);
+
+    } else {
+        // si el cuadro no está primero ni último, se deben modificar las posiciones
+        await pool.query('DELETE FROM t_cuadros WHERE ID = ?', [id]);
+        let cambioPosicion = await pool.query('SELECT * FROM t_cuadros WHERE posicion = ?', [posicionLibre[0].posicion - 1])
+
+        while (posicionLibre[0].posicion !== posicionMenor[0].menor) {
+            // tomo la posicion del cuadro dentro de cambioposicion
+            posicionLibre[0].posicion = cambioPosicion[0].posicion;
+
+            // le sumo una posicion a cambioposicion
+            cambioPosicion[0].posicion++
+                // lo sumo a la base de datos
+                await pool.query('UPDATE t_cuadros set ? WHERE id = ?', [cambioPosicion[0], cambioPosicion[0].id]);
+
+            // asigno el cuadro anterior a cambioposicion
+            cambioPosicion = await pool.query('SELECT * FROM t_cuadros WHERE posicion = ?', [posicionLibre[0].posicion - 1]);
+
+        }
+    }
     req.flash('success','Cuadro eliminado con éxito');
     res.redirect('/adminhome'); 
 });
