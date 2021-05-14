@@ -59,11 +59,15 @@
   <div id="form-upload">
     <div class="modal-upload-image"><img src="images/pinturapng2.png" alt=""></div>
     <form class="form-form-upload" action="/upload" method="POST" enctype="multipart/form-data">
-        <input type="text" name="nombre" placeholder="Nombre" required>
-        <input type="text" name="descripcion" placeholder="descripcion" required>
+        <input id="nombre" type="text" name="nombre" placeholder="Nombre" required>
+        <input id="descripcion" type="text" name="descripcion" placeholder="descripcion" required>
         <input id="file" type="file" name="image" required>
-        <div id="preview"></div>
+        <div class="recuadro-preview">
+          <h3 class="titulo-preview" id="titulo-preview"><i class="far fa-image"></i></h3>
+          <div id="preview"></div>
+        </div>
         <button type="submit">Upload</button>
+        <button id="btn-reset">Eliminar</button>
     </form>
   </div>
 </div>

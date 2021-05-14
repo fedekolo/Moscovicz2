@@ -151,7 +151,7 @@ td {
 
 
 .form-form-upload button{
-    margin-top: 2%;
+    margin: 2% auto auto auto;
     width: fit-content;
     border-radius: 5px;
     border: chocolate 2px solid;
@@ -164,6 +164,24 @@ td {
 .form-form-upload button:hover{
     background-color: rgba(210, 105, 30, 0.781);
     color: white;
+}
+
+.recuadro-preview {
+    min-height: 5rem;
+    height: auto;
+    width: 80%;
+    border: rgba(0, 0, 0, 0.404) 5px solid;
+    margin: 1rem auto auto auto;
+    border-style: dashed;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.titulo-preview {
+    text-align: center;
 }
 
 @media (max-width: 950px) {
