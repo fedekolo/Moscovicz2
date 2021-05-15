@@ -41,15 +41,15 @@ document.getElementById("file").onchange = function(e) {
   
     // Le decimos que cuando este listo ejecute el código interno
     reader.onload = function(){
-        let preview = document.getElementById('preview'),
+        let preview = document.getElementById('preview');
+        let iconPreview = document.getElementById('icon-preview');
         image = document.createElement('img');
         
         image.src = reader.result;
         
         preview.innerHTML = '';
+        iconPreview.style.display = 'none';
         preview.append(image);
-        let tituloPreview = document.getElementById('titulo-preview');
-        tituloPreview.style.display = 'none';
     };
 }
 
@@ -60,6 +60,7 @@ let resetCuadro = () => {
     document.getElementById('nombre').value = "";
     document.getElementById('descripcion').value = "";
     document.getElementById('file').value = "";
+    document.getElementById('icon-preview').style.display = "block";
     let preview = document.getElementById('preview');
     preview.innerHTML = '';
 };

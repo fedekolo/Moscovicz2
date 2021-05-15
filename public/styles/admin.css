@@ -313,6 +313,11 @@ td {
     padding: 1rem;
 }
 
+    .recuadro-preview i {
+        font-size: 3rem;
+        opacity: .7;
+    }
+
 .titulo-preview {
     text-align: center;
 }

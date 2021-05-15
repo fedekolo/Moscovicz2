@@ -31,6 +31,7 @@ const upload = multer({
         };
         cb("Error en la extension del archivo") //mensaje de error
     }
+    
 }).single('image'); 
 
 // RUTAS
