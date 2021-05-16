@@ -5,7 +5,9 @@ const multer = require('multer');
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
 
-// SETTINGS
+// CONF PARA SUBIR ARCHIVOS DE CUADROS
+
+// settings
 const storage = multer.diskStorage({
     destination: path.join(__dirname,'../public/images/cuadros'), // permite guardar imagenes en la ruta que elija
     filename: (req,file,cb) => {
@@ -14,7 +16,7 @@ const storage = multer.diskStorage({
 });
 const pool = require('../database'); // conexion con base de datos
 
-// MIDDLEWARE
+// middleware
 const upload = multer({
     storage,
     dest: path.join(__dirname,'../public/images/cuadros'), // permite guardar imagenes en la ruta que elija
@@ -29,6 +31,7 @@ const upload = multer({
         };
         cb("Error en la extension del archivo") //mensaje de error
     }
+    
 }).single('image'); 
 
 // RUTAS

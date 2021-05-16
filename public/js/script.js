@@ -41,16 +41,30 @@ document.getElementById("file").onchange = function(e) {
   
     // Le decimos que cuando este listo ejecute el código interno
     reader.onload = function(){
-      let preview = document.getElementById('preview'),
-              image = document.createElement('img');
-  
-      image.src = reader.result;
-  
-      preview.innerHTML = '';
-      preview.append(image);
+        let preview = document.getElementById('preview');
+        let iconPreview = document.getElementById('icon-preview');
+        image = document.createElement('img');
+        
+        image.src = reader.result;
+        
+        preview.innerHTML = '';
+        iconPreview.style.display = 'none';
+        preview.append(image);
     };
-  }
+}
 
+// BTN RESET DE CUADROS POR SUBIR
+
+let btnResetCuadro = document.getElementById('btn-reset');
+let resetCuadro = () => { 
+    document.getElementById('nombre').value = "";
+    document.getElementById('descripcion').value = "";
+    document.getElementById('file').value = "";
+    document.getElementById('icon-preview').style.display = "block";
+    let preview = document.getElementById('preview');
+    preview.innerHTML = '';
+};
+btnResetCuadro.addEventListener('click',resetCuadro);
 
 // LOGO MOBILE
 
