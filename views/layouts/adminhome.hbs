@@ -19,6 +19,7 @@
 	<div class="icon"><i class="fa fa-arrow-right" aria-hidden="true"></i></div>
 </a>
 
+{{!-- visualizador de cuadros version desktop --}}
 <table class="table">
   <thead>
     <tr>
@@ -74,6 +75,44 @@
 
   </tbody>
 </table>
+
+{{!-- visualizador de cuadros version mobile --}}
+    {{#each cuadro}}
+    <img class="cuadro-imagen" src="/images/cuadros/{{archivo_imagen}}" id="cuadro-imagen-{{id}}">
+    <form action="/editarcuadro/{{id}}" method="POST">
+      <div class="mb-3 edit-cuadro-input">
+          <label for="form-titulo" class="form-label">Título</label>
+          <input type="text" class="form-control" id="form-titulo" autocomplete="off" value="{{nombre}}" name="nombre">
+      </div>
+      <div class="mb-3 edit-cuadro-input">
+          <label for="form-descripcion" class="form-label">Descripción</label>
+          <input type="text" class="form-control" id="form-descripcion" autocomplete="off" value="{{descripcion}}" name="descripcion">
+      </div>
+      <div class="cuadros-admin-botones">
+        <button type="submit" class="btn btn-secondary btn-hover">
+          <i class="fas fa-edit cuadros-iconos"></i>
+          <span class="btn-text">Editar</span>
+        </button>
+    </form>
+    <form action="/eliminarcuadro/{{id}}" method="POST">
+      <button class="btn btn-secondary btn-hover" type="submit">
+        <i class="fas fa-times cuadros-iconos"></i>
+        <span class="btn-text">Eliminar</span>
+      </button>
+    </form>
+    <form action="/subirposicion/{{id}}" method="POST">
+      <button class="btn btn-secondary btn-hover" type="submit">
+        <i class="fas fa-arrow-up cuadros-iconos"></i>
+        <span class="btn-text">Subir</span>
+      </button>
+    </form>
+    <form action="/bajarposicion/{{id}}" method="POST">
+      <button class="btn btn-secondary btn-hover" type="submit">
+        <i class="fas fa-arrow-down cuadros-iconos"></i>
+        <span class="btn-text">Bajar</span>
+      </button>
+    </form>
+    {{/each}}
 
 <!-- popup modal -->
 <div id="modal-upload" class="modal">

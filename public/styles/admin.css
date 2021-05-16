@@ -85,6 +85,10 @@ margin-bottom: 20px;
     margin-bottom: 2%;
 }
 
+    .table-mobile {
+        display: none;
+    }
+
 .table thead {
     background-color: rgba(0, 0, 0, 0.39);
 }
@@ -328,6 +332,21 @@ td {
         background-size: auto 300%;
         background-position: center center;
     }
+}
+
+@media (max-width: 480px) {
+    .logo-admin {
+        width: 85%;
+    }
+
+    .table {
+        display: none;
+    }
+
+    .table-mobile {
+        display: block;
+    }
+
 }
 
 
