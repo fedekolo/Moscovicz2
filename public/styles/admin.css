@@ -85,7 +85,7 @@ margin-bottom: 20px;
     margin-bottom: 2%;
 }
 
-    .table-mobile {
+    .cuadros-admin-mobile {
         display: none;
     }
 
@@ -343,7 +343,7 @@ td {
         display: none;
     }
 
-    .table-mobile {
+    .cuadros-admin-mobile {
         display: block;
     }
 
