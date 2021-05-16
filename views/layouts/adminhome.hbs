@@ -10,8 +10,14 @@
 </header>
 
 <div class="btn-container">
-  <a class="btn btn-secondary btn-admin" href="/"><i class="fas fa-home"></i></a>
-  <button class="btn btn-secondary btn-admin" id="btn-modal"><i class="fas fa-plus"></i></button>
+  <a class="btn-ej" href="/">
+    <span class="btn-texto">Home</span>
+    <div class="icon"><i class="fas fa-home"></i></div>
+  </a>
+  <button class="btn-ej" id="btn-modal">
+    <span class="btn-texto">Agregar</span>
+    <div class="icon"><i class="fas fa-plus"></i></div>
+  </button>
 </div>
 
 <a href="#" class="btn-ej">
@@ -45,27 +51,27 @@
                   <input type="text" class="form-control" id="form-descripcion" autocomplete="off" value="{{descripcion}}" name="descripcion">
               </div>
               <div class="cuadros-admin-botones">
-                <button type="submit" class="btn btn-secondary btn-hover">
-                  <i class="fas fa-edit cuadros-iconos"></i>
-                  <span class="btn-text">Editar</span>
+                <button type="submit" class="btn-ej btn-edit">
+                  <span class="btn-texto">Edit</span>
+                  <div class="icon"><i class="fas fa-edit" aria-hidden="true"></i></div>
                 </button>
             </form>
                 <form action="/eliminarcuadro/{{id}}" method="POST">
-                  <button class="btn btn-secondary btn-hover" type="submit">
-                    <i class="fas fa-times cuadros-iconos"></i>
-                    <span class="btn-text">Eliminar</span>
+                  <button class="btn-ej" type="submit">
+                    <span class="btn-texto">Borrar</span>
+                    <div class="icon"><i class="fas fa-times" aria-hidden="true"></i></div>
                   </button>
                 </form>
                 <form action="/subirposicion/{{id}}" method="POST">
-                  <button class="btn btn-secondary btn-hover" type="submit">
-                    <i class="fas fa-arrow-up cuadros-iconos"></i>
-                    <span class="btn-text">Subir</span>
+                  <button class="btn-ej" type="submit">
+                    <span class="btn-texto">Subir</span>
+                    <div class="icon"><i class="fas fa-arrow-up" aria-hidden="true"></i></div>
                   </button>
                 </form>
                 <form action="/bajarposicion/{{id}}" method="POST">
-                  <button class="btn btn-secondary btn-hover" type="submit">
-                    <i class="fas fa-arrow-down cuadros-iconos"></i>
-                    <span class="btn-text">Bajar</span>
+                  <button class="btn-ej" type="submit">
+                    <span class="btn-texto">Bajar</span>
+                    <div class="icon"><i class="fas fa-arrow-down" aria-hidden="true"></i></div>
                   </button>
                 </form>
               </div>
