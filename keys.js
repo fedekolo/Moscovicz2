@@ -1,7 +1,7 @@
 module.exports = {
 
     // HEROKU
-    // database: {
+    database: {
             host: 'us-cdbr-east-03.cleardb.com',
             user: 'b24eab56dd5dee',
             password:'baa9ffde',
