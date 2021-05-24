@@ -211,6 +211,7 @@ td {
 
 #modal-upload{
     background-color: rgba(0, 0, 0, 0.815);
+    display: none;
 }
 
 #form-upload {
