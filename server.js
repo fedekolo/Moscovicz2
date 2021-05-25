@@ -58,7 +58,7 @@ app.use(express.static(path.join(__dirname, 'public'))); // evita que puedas abr
 
 // PUERTO HEROKU
 // app.listen(PORT,()=>{
-//   console.log('Servidor corriendo en puerto ${PORT}');
+//   console.log(`Servidor corriendo en puerto ${PORT}`);
 // });
 
 // PUERTO LOCAL

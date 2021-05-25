@@ -9,5 +9,9 @@
         <li class="item-menu"><a href="#obras-mobile">obras</a></li>
         <li class="item-menu"><a href="#galeria">galeria</a></li>
         <li class="item-menu"><a href="#contacto">contacto</a></li>
+        {{#if user}}
+        <li class="item-menu-admin"><a href="/adminhome">admin home</a></li>
+        <li class="item-menu-admin"><a href="/cerrarsesion">cerrar sesión</a></li>
+        {{/if}}
     </ul>
 </div>
