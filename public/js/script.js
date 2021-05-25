@@ -18,11 +18,11 @@ modal.style.display = "none";
 // POPUP UPLOAD CUADROS
 
 // configuracion para abrir modal
-let modalUpload = document.getElementById("modal-upload");
-let btnModalUpload = document.getElementById("btn-modal");
 btnModalUpload.onclick = function(){
     modalUpload.style.display = "block";
 }
+let modalUpload = document.getElementById("modal-upload");
+let btnModalUpload = document.getElementById("btn-modal");
 
 // boton para cerrar modal
 var closeUpload = document.getElementsByClassName("close")[0];
@@ -77,5 +77,14 @@ window.addEventListener('scroll', function() {
         document.querySelector('.logoMenu').classList.remove('show');
     }
 });
+
+// MENU MOBILE
+// Arreglo en menu mobile que va a variar su height segun si el admin está logueado o no (tiene mas o menos items)
+
+let inputMenu = document.getElementById("menu");
+
+if (inputMenu.checked == true) {
+    console.log("ok")
+}
 
     

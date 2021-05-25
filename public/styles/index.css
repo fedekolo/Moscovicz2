@@ -718,8 +718,12 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 20px;
     }
 
+    .item-menu-admin {
+        font-size: 20px;
+    }
+
     .menu-mobile-input:checked ~ .menu-mobile {
-        height: 115px;
+        height: 200px;
     }
 
     .menu-mobile-input:checked ~ .menu-mobile-label img.menu-icono {
@@ -916,10 +920,11 @@ input[type=number]::-webkit-outer-spin-button {
     }
 
     .titulo-exposicion {
-        margin: 20px auto 10px auto;
+        margin: 20px auto 20px auto;
         text-align: center;
         position: relative;
         left: 5px;
+        font-size: xx-large;
     }
 
     .info-exposicion {
