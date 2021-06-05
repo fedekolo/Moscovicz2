@@ -127,12 +127,16 @@
         <input id="nombre" type="text" name="nombre" placeholder="Nombre" required>
         <input id="descripcion" type="text" name="descripcion" placeholder="descripcion" required>
         <input id="file" type="file" name="image" required>
-        <div class="recuadro-preview">
-          <i id="icon-preview" class="far fa-image"></i>
-          <div id="preview"></div>
-        </div>
-        <button type="submit">Upload</button>
-        <button id="btn-reset">Eliminar</button>
+        <div class="modal-bottom-container">
+          <div class="recuadro-preview">
+            <i id="icon-preview" class="far fa-image"></i>
+            <div id="preview"></div>
+          </div>
+          <div class="modal-btns-container">
+            <button class="modal-btn1" type="submit">Cargar</button>
+            <button class="modal-btn2" id="btn-reset">Limpiar</button>
+          </div>
+        </div>  
     </form>
   </div>
 </div>
