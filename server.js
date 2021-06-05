@@ -29,7 +29,7 @@ app.set('view engine', '.hbs');
 app.use(flash());
 app.use(morgan('dev'));
 app.use(express.json()); // permite que mi app acepte json del lado del cliente
-app.use(express.urlencoded({extended:true})); // permite interprete los datos que vienen del cliente
+app.use(express.urlencoded({extended:true})); // permite interprete los datos que vienen del cliente, por ejemplo desde un form
 app.use(session({
     secret: 'este es es un secreto que no se lo podes contar a nadie en tu vida',
     resave: false, //sirve para que no se renueve la sesion
@@ -57,11 +57,11 @@ app.use(require('./routes/contacto'));
 app.use(express.static(path.join(__dirname, 'public'))); // evita que puedas abrir las imagenes directo desde el navegador
 
 // PUERTO HEROKU
-// app.listen(PORT,()=>{
-//   console.log(`Servidor corriendo en puerto ${PORT}`);
-// });
+app.listen(PORT,()=>{
+  console.log(`Servidor corriendo en puerto ${PORT}`);
+});
 
 // PUERTO LOCAL
-app.listen(3306,()=>{
-    console.log('escuchando en el puerto 3306');
-});
+// app.listen(3306,()=>{
+//     console.log('escuchando en el puerto 3306');
+// });

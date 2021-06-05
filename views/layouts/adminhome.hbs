@@ -33,7 +33,7 @@
     {{#each cuadro}}
     <tr class="fila-cuadro">
         <td>
-            <img class="cuadro-imagen" src="/images/cuadros/{{archivo_imagen}}" id="cuadro-imagen-{{id}}">
+            <img class="cuadro-imagen" src="{{archivo_imagen}}" id="cuadro-imagen-{{id}}">
         </td>
           <td class="inputs-cuadro">
             <form action="/editarcuadro/{{id}}" method="POST">
@@ -80,7 +80,7 @@
 {{!-- visualizador de cuadros version mobile --}}
 <div class="cuadros-admin-mobile">
   {{#each cuadro}}
-  <img class="cuadro-imagen" src="/images/cuadros/{{archivo_imagen}}" id="cuadro-imagen-{{id}}">
+  <img class="cuadro-imagen" src="{{archivo_imagen}}" id="cuadro-imagen-{{id}}">
   <form action="/editarcuadro/{{id}}" method="POST">
     <div class="mb-3 edit-cuadro-input">
         <label for="form-titulo" class="form-label">Título</label>
@@ -123,7 +123,9 @@
   <span class="close">&times;</span>
   <div id="form-upload">
     <div class="modal-upload-image"><img src="images/pinturapng2.png" alt=""></div>
-    <form class="form-form-upload" action="/upload" method="POST" enctype="multipart/form-data">
+    <form class="form-form-upload" action="/upload" method="POST" enctype="multipart/form-data"> 
+    {{!-- el enctype es porque estoy subiendo un archivo, no solo informacion --}}
+
         <input id="nombre" type="text" name="nombre" placeholder="Nombre" required>
         <input id="descripcion" type="text" name="descripcion" placeholder="descripcion" required>
         <input id="file" type="file" name="image" required>

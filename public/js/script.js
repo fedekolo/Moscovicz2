@@ -78,17 +78,4 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// MENU MOBILE
-// Arreglo en menu mobile que va a variar su height segun si el admin está logueado o no (tiene mas o menos items)
-function inputMenu() {
-
-    let inputMenu = document.querySelector(".menu-mobile-input");
-    
-    if (inputMenu.checked === true) {
-        if (user) {
-            alert("holis")
-        }
-    }
-}
-
     

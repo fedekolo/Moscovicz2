@@ -4,9 +4,13 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
+const cloudinary = require('cloudinary').v2
+const { cloudinaryDatos } = require('../keys');
+const fs = require('fs-extra');
 
-// CONF PARA SUBIR ARCHIVOS DE CUADROS
+// --CONFIG PARA SUBIR ARCHIVOS DE CUADROS--
 
+// MULTER
 // settings
 const storage = multer.diskStorage({
     destination: path.join(__dirname,'../public/images/cuadros'), // permite guardar imagenes en la ruta que elija
@@ -34,21 +38,33 @@ const upload = multer({
     
 }).single('image'); 
 
-// RUTAS
+// CLOUDINARY
+// configuracion de cuenta
+cloudinary.config({
+    cloud_name: cloudinaryDatos.cloudName,
+    api_key: cloudinaryDatos.apiKey,
+    api_secret: cloudinaryDatos.apiSecret
+});
+
+// --RUTAS--
 
 // subir cuadro
 router.post('/upload',upload, async (req,res) => {
     const { nombre, descripcion} = req.body;
-    const archivo_imagen = req.file.filename;
+    const infoImagenCloudinary = await cloudinary.uploader.upload(req.file.path); // subo la imagen a cloudinary
+    const archivo_imagen = infoImagenCloudinary.secure_url; // tomo la url de cloudinary
+    const public_id = infoImagenCloudinary.public_id;
     const posicionMayor = await pool.query('SELECT MAX(posicion) mayor FROM t_cuadros'); // tomo la posicion mayor hasta el momento para darle la nueva posicion al cuadro nuevo
-    const posicion = posicionMayor[0].mayor + 1;
+    const posicion = posicionMayor[0].mayor + 1; // le doy la posicion al cuadro nuevo
     const cuadroNuevo = {
         nombre,
         archivo_imagen,
         descripcion,
-        posicion
+        posicion,
+        public_id
     };
     await pool.query('INSERT INTO t_cuadros set ?', [cuadroNuevo]);
+    await fs.unlink(req.file.path); // una vez que subí la imagen al servidor y a la base de datos, lo elimino de mi carpeta local
     req.flash('success','Cuadro subido correctamente');
     res.redirect('/adminhome');
 });
@@ -69,6 +85,10 @@ router.post('/editarcuadro/:id', async (req, res) => {
 // eliminar cuadro
 router.post('/eliminarcuadro/:id', async (req, res) => {
     const { id } = req.params;
+
+    // elimino el cuadro de cloudinary
+    const public_id = await pool.query('SELECT public_id FROM t_cuadros WHERE id = ?', [id]);
+    await cloudinary.uploader.destroy(public_id[0].public_id);
 
     // tomo la posicion que deja vacante el cuadro que voy a eliminar y lo elimino luego
     let posicionLibre = await pool.query('SELECT posicion FROM t_cuadros WHERE id = ?', [id]);

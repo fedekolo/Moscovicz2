@@ -14,7 +14,7 @@
 
         {{#each cuadro}}
         <div class="cuadro-contenedor" id="cuadro-contenedor-{{id}}"> 
-            <img class="cuadro-imagen" src="/images/cuadros/{{archivo_imagen}}" alt="{{descripcion}}" id="cuadro-imagen-{{id}}">
+            <img class="cuadro-imagen" src="{{archivo_imagen}}" alt="{{descripcion}}" id="cuadro-imagen-{{id}}">
             <h4 class="cuadro-texto" id="cuadro-texto-{{id}}">{{nombre}}</h4>
         </div>
 
@@ -44,7 +44,7 @@
         <input id="abrir-cuadro1" type="checkbox" class="abrir-cuadro-input">
         <input id="abrir-descripcion1" type="checkbox" class="abrir-descripcion-input">
         <div class="cuadro-contenedor"> 
-            <img class="cuadro-imagen" src="/images/cuadros/{{archivo_imagen}}" alt="{{descripcion}}"/>
+            <img class="cuadro-imagen" src="{{archivo_imagen}}" alt="{{descripcion}}"/>
             <div class="cuadro-contenedor-descripcion">
                 <h4 class="titulo-cuadro-mobile">{{nombre}}</h4> 
                 <p class="descripcion-cuadro-mobile">{{descripcion}}</p>
