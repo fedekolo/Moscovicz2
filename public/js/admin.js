@@ -1,21 +1,4 @@
-// POPUP VISUALIZACION CUADROS
-
-// Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var modalImg = document.getElementById("img01");
-var captionText = document.getElementById("caption");
-
-// Get the <span> element that closes the modal
-var closeModal = document.getElementsByClassName("close")[0];
-
-// When the user clicks on <span> (x), close the modal
-closeModal.onclick = function() { 
-modal.style.display = "none";
-}
-
-// POPUP UPLOAD CUADROS
+// POPUP UPLOAD CUADROS ADMIN
 
 // configuracion para abrir modal
 let modalUpload = document.getElementById("modal-upload");
@@ -33,6 +16,13 @@ modalUpload.style.display = "none";
 // PREVISUALIZACION DE CUADROS POR SUBIR
 
 document.getElementById("file").onchange = function(e) {
+    
+    // Comprueba que el tamaño del archivo sea menor a 200kb
+    if (e.target.files[0].size > 200000) {
+        document.getElementById('file').value = "";
+        return document.getElementById('error-text').innerText = "El archivo debe pesar 200KB o menos.";
+    }
+    
     // Creamos el objeto de la clase FileReader
     let reader = new FileReader();
   
@@ -48,6 +38,7 @@ document.getElementById("file").onchange = function(e) {
         image.src = reader.result;
         
         preview.innerHTML = '';
+        document.getElementById('error-text').innerText = "";
         iconPreview.style.display = 'none';
         preview.append(image);
     };
@@ -65,17 +56,3 @@ let resetCuadro = () => {
     preview.innerHTML = '';
 };
 btnResetCuadro.addEventListener('click',resetCuadro);
-
-// LOGO MOBILE
-
-window.addEventListener('scroll', function() {
-    if (window.scrollY > 160) {
-        if (!document.querySelector('.logoMenu').classList.contains('show')){
-            document.querySelector('.logoMenu').classList.add('show');
-        }
-    } else {
-        document.querySelector('.logoMenu').classList.remove('show');
-    }
-});
-
-    

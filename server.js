@@ -57,11 +57,11 @@ app.use(require('./routes/contacto'));
 app.use(express.static(path.join(__dirname, 'public'))); // evita que puedas abrir las imagenes directo desde el navegador
 
 // PUERTO HEROKU
-app.listen(PORT,()=>{
-  console.log(`Servidor corriendo en puerto ${PORT}`);
-});
+// app.listen(PORT,()=>{
+//   console.log(`Servidor corriendo en puerto ${PORT}`);
+// });
 
 // PUERTO LOCAL
-// app.listen(3306,()=>{
-//     console.log('escuchando en el puerto 3306');
-// });
+app.listen(3306,()=>{
+    console.log('escuchando en el puerto 3306');
+});

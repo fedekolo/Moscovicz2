@@ -33,7 +33,7 @@ body {
 .logo-admin {
 width: 40%;
 max-width: 400px;
-min-width: 200px;
+min-width: 300px;
 margin-bottom: 20px;
 }
 
@@ -53,9 +53,10 @@ margin-bottom: 20px;
 
 .btn-container{
     display: flex;
-    width: 20%;
+    width: fit-content;
     justify-content: space-between;
     margin-bottom: 1.7%;
+    gap: 10px;
 }
 
 .btn-admin{
@@ -84,10 +85,6 @@ margin-bottom: 20px;
     box-shadow: 3px 4px 6px 3px rgba(0, 0, 0, 0.575);
     margin-bottom: 2%;
 }
-
-    .cuadros-admin-mobile {
-        display: none;
-    }
 
 .table thead {
     background-color: rgba(0, 0, 0, 0.39);
@@ -126,10 +123,9 @@ td {
     flex-wrap: wrap;
     justify-content: space-between;
     margin: auto;
+    gap: 5px;
 }
 
-
-/* BOTON PRUEBA */
 .btn-ej
 {
 	border-radius: 4px;
@@ -142,13 +138,10 @@ td {
 	text-decoration: none;
 	line-height: 1;
     background-color: rgba(128, 128, 128, 0);
-    width: 135px;
+    width: fit-content;
     height: fit-content;
     font-weight: bold;
 }
-    /* .btn-edit{
-        padding: 0;
-    } */
 
 	.btn-ej span
 	{
@@ -185,7 +178,6 @@ td {
 		bottom: 0;
 		right: 0;
 		left: 0;
-		/* background-color: #fff; */
 		opacity: 0;
 		transition: opacity 300ms ease;
 	}
@@ -195,7 +187,7 @@ td {
     }
 	
 	.btn-ej:hover > .btn-texto {
-			right:100%;
+		right:100%;
 	}
 
     a:hover{
@@ -206,6 +198,10 @@ td {
         border-left: 0;
         font-size:1.8em;
         width: 100%;
+    }
+
+    .icon-simple {
+        display: none;
     }
 
 /* MODAL CARGAR CUADRO */
@@ -268,7 +264,6 @@ td {
     padding: 1.5px;
 }
 
-
 .modal-btn1 {
     width: fit-content;
     border-radius: 5px;
@@ -291,8 +286,6 @@ td {
     box-sizing: border-box;
 }
 
-
-
 .form-form-upload button:hover{
     background-color: rgba(250, 245, 241, 0.781);
     border:rgba(250, 245, 241, 0.781) 2px solid; ;
@@ -304,7 +297,6 @@ td {
     height: fit-content;
     width: 80%;
     border: rgba(0, 0, 0, 0.404) 5px solid;
-    /* margin: 1rem auto auto auto; */
     border-style: dashed;
     border-radius: 1rem;
     display: flex;
@@ -340,11 +332,16 @@ td {
     box-sizing: border-box;
 }
 
-/* .modal-btn2{
-    margin-top: 18%;
-    box-sizing: border-box;
-    background-color:rgb(117, 93, 76);
-} */
+#error-text {
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+    margin-top: 10px;
+}
+
+.cuadros-admin-mobile {
+    display: none;
+}
 
 @media (max-width: 950px) {
     body {
@@ -352,9 +349,42 @@ td {
         background-size: auto 300%;
         background-position: center center;
     }
+
+    .recuadro-preview {
+        width: 70%;
+    }
+
 }
 
-@media (max-width: 480px) {
+@media (max-width: 720px) {
+    .btn-ej {
+        width: 50px;
+        height: 50px;
+        padding: 10px;
+
+    }
+    
+    .btn-ej span {
+        display: none;
+    }
+
+    .icon {
+        display: none;
+    }
+
+    .icon-simple {
+        display: block;
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 600px) {
+    
+    body {
+        background-image: url("../images/background-admin-2.jpg");
+        background-size: cover;
+    }
+
     .logo-admin {
         width: 85%;
     }
@@ -363,8 +393,87 @@ td {
         display: none;
     }
 
+    .btn-container {
+        margin: 20px auto;
+        gap: 20px;
+    }
+
     .cuadros-admin-mobile {
-        display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+        .cuadros-admin-mobile-info {
+            width: 80%;
+        }
+
+    .cuadro-divisor {
+        width: 90%;
+        height: 5px;
+        border-radius: 3px;
+        background-color: rgba(0, 0, 0, 0.411);
+        margin-bottom: 10px;
+    }
+
+    .cuadro-imagen {
+        width: 80%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .edit-cuadro-input {
+        text-align: center;
+        color: white;
+    }
+
+    .cuadros-admin-botones {
+        margin: 20px auto;
+    }
+
+    #form-upload {
+        width: 90%;
+    }
+
+    .modal-upload-image img{
+        width: 80%;
+        margin: 10px auto;
+    }
+
+    .form-form-upload input {
+        margin-bottom: 10px;
+    }
+
+    .modal-bottom-container {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .modal-btns-container {
+        flex-direction: row;
+        width: 100%;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .modal-btn1 {
+        margin-top: 0;
+        padding: 15px;
+    }
+
+    .modal-btn2 {
+        margin-top: 0;
+        padding: 15px;
+    }
+
+    .recuadro-preview {
+        width: 100%;
+    }
+
+    #error-text {
+        font-size: 15px;
     }
 
 }

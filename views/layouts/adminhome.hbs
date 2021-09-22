@@ -10,13 +10,15 @@
 </header>
 
 <div class="btn-container">
-  <a class="btn-ej" href="/">
+  <a class="btn-ej" href="/" target="_blank">
     <span class="btn-texto">Home</span>
     <div class="icon"><i class="fas fa-home"></i></div>
+    <div class="icon-simple"><i class="fas fa-home"></i></div>
   </a>
   <button class="btn-ej" id="btn-modal">
     <span class="btn-texto">Agregar</span>
     <div class="icon"><i class="fas fa-plus"></i></div>
+    <div class="icon-simple"><i class="fas fa-plus"></i></div>
   </button>
 </div>
 
@@ -47,26 +49,30 @@
               </div>
               <div class="cuadros-admin-botones">
                 <button type="submit" class="btn-ej btn-edit">
-                  <span class="btn-texto">Edit</span>
+                  <span class="btn-texto">Editar</span>
                   <div class="icon"><i class="fas fa-edit" aria-hidden="true"></i></div>
+                  <div class="icon-simple"><i class="fas fa-edit" aria-hidden="true"></i></div>
                 </button>
             </form>
                 <form action="/eliminarcuadro/{{id}}" method="POST">
                   <button class="btn-ej" type="submit">
                     <span class="btn-texto">Borrar</span>
                     <div class="icon"><i class="fas fa-times" aria-hidden="true"></i></div>
+                    <div class="icon-simple"><i class="fas fa-times" aria-hidden="true"></i></div>
                   </button>
                 </form>
                 <form action="/subirposicion/{{id}}" method="POST">
                   <button class="btn-ej" type="submit">
                     <span class="btn-texto">Subir</span>
                     <div class="icon"><i class="fas fa-arrow-up" aria-hidden="true"></i></div>
+                    <div class="icon-simple"><i class="fas fa-arrow-up" aria-hidden="true"></i></div>
                   </button>
                 </form>
                 <form action="/bajarposicion/{{id}}" method="POST">
                   <button class="btn-ej" type="submit">
                     <span class="btn-texto">Bajar</span>
                     <div class="icon"><i class="fas fa-arrow-down" aria-hidden="true"></i></div>
+                    <div class="icon-simple"><i class="fas fa-arrow-down" aria-hidden="true"></i></div>
                   </button>
                 </form>
               </div>
@@ -78,10 +84,11 @@
 </table>
 
 {{!-- visualizador de cuadros version mobile --}}
+{{#each cuadro}}
 <div class="cuadros-admin-mobile">
-  {{#each cuadro}}
+  <div class="cuadro-divisor"></div>
   <img class="cuadro-imagen" src="{{archivo_imagen}}" id="cuadro-imagen-{{id}}">
-  <form action="/editarcuadro/{{id}}" method="POST">
+  <form action="/editarcuadro/{{id}}" method="POST" class="cuadros-admin-mobile-info">
     <div class="mb-3 edit-cuadro-input">
         <label for="form-titulo" class="form-label">Título</label>
         <input type="text" class="form-control" id="form-titulo" autocomplete="off" value="{{nombre}}" name="nombre">
@@ -91,44 +98,40 @@
         <input type="text" class="form-control" id="form-descripcion" autocomplete="off" value="{{descripcion}}" name="descripcion">
     </div>
     <div class="cuadros-admin-botones">
-      <button type="submit" class="btn btn-secondary btn-hover">
-        <i class="fas fa-edit cuadros-iconos"></i>
-        <span class="btn-text">Editar</span>
+      <button type="submit" class="btn-ej btn-edit">
+        <div class="icon-simple"><i class="fas fa-edit" aria-hidden="true"></i></div>
       </button>
-  </form>
-  <form action="/eliminarcuadro/{{id}}" method="POST">
-    <button class="btn btn-secondary btn-hover" type="submit">
-      <i class="fas fa-times cuadros-iconos"></i>
-      <span class="btn-text">Eliminar</span>
-    </button>
-  </form>
-  <form action="/subirposicion/{{id}}" method="POST">
-    <button class="btn btn-secondary btn-hover" type="submit">
-      <i class="fas fa-arrow-up cuadros-iconos"></i>
-      <span class="btn-text">Subir</span>
-    </button>
-  </form>
-  <form action="/bajarposicion/{{id}}" method="POST">
-    <button class="btn btn-secondary btn-hover" type="submit">
-      <i class="fas fa-arrow-down cuadros-iconos"></i>
-      <span class="btn-text">Bajar</span>
-    </button>
-  </form>
+      </form>
+          <form action="/eliminarcuadro/{{id}}" method="POST">
+            <button class="btn-ej" type="submit">
+              <div class="icon-simple"><i class="fas fa-times" aria-hidden="true"></i></div>
+            </button>
+          </form>
+          <form action="/subirposicion/{{id}}" method="POST">
+            <button class="btn-ej" type="submit">
+              <div class="icon-simple"><i class="fas fa-arrow-up" aria-hidden="true"></i></div>
+            </button>
+          </form>
+          <form action="/bajarposicion/{{id}}" method="POST">
+            <button class="btn-ej" type="submit">
+              <div class="icon-simple"><i class="fas fa-arrow-down" aria-hidden="true"></i></div>
+            </button>
+          </form>
+    </div>
   </div>
-  {{/each}}
 </div>
+{{/each}}
 
 <!-- popup modal -->
 <div id="modal-upload" class="modal">
   <span class="close">&times;</span>
   <div id="form-upload">
     <div class="modal-upload-image"><img src="images/pinturapng2.png" alt=""></div>
-    <form class="form-form-upload" action="/upload" method="POST" enctype="multipart/form-data"> 
-    {{!-- el enctype es porque estoy subiendo un archivo, no solo informacion --}}
-
+    <form class="form-form-upload" action="/upload" method="POST" enctype="multipart/form-data">{{!-- el enctype es porque estoy subiendo un archivo, no solo informacion --}}
         <input id="nombre" type="text" name="nombre" placeholder="Nombre" required>
         <input id="descripcion" type="text" name="descripcion" placeholder="descripcion" required>
         <input id="file" type="file" name="image" required>
+        <h3 id="error-text"></h3>
         <div class="modal-bottom-container">
           <div class="recuadro-preview">
             <i id="icon-preview" class="far fa-image"></i>
@@ -142,3 +145,7 @@
     </form>
   </div>
 </div>
+
+{{!-- JS --}}
+
+<script src="./js/admin.js"></script>

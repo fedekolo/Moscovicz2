@@ -50,7 +50,7 @@ cloudinary.config({
 
 // subir cuadro
 router.post('/upload',upload, async (req,res) => {
-    const { nombre, descripcion} = req.body;
+    const { nombre, descripcion } = req.body;
     const infoImagenCloudinary = await cloudinary.uploader.upload(req.file.path); // subo la imagen a cloudinary
     const archivo_imagen = infoImagenCloudinary.secure_url; // tomo la url de cloudinary
     const public_id = infoImagenCloudinary.public_id;
